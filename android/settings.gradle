@@ -1,0 +1,3 @@
+rootProject.name = 'cs3200Project'
+
+include ':app'
