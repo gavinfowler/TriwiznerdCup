@@ -2,9 +2,9 @@
  * Star Wars App
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, View} from 'react-native';
-import { Button, Text, Container } from 'native-base'
+import React, { Component } from 'react';
+import { Platform, StyleSheet } from 'react-native';
+import { Button, Text, Container, List, ListItem } from 'native-base'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -13,7 +13,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class Home extends Component{
+export default class Home extends Component {
   static navigationOptions = {
     title: 'Home'
   }
@@ -21,7 +21,25 @@ export default class Home extends Component{
 
   render() {
     return (
-      <Container><Button><Text>Test</Text></Button></Container>
+      <Container>
+        <Button>
+          <Text>
+            Test
+          </Text>
+        </Button>
+        <List>
+          <ListItem onPress={()=>{alert('people Pressed')}}>
+            <Text>
+              People
+            </Text>
+          </ListItem>
+          <ListItem onPress={()=>{alert('planets Pressed')}}>
+            <Text>
+              Planets
+            </Text>
+          </ListItem>
+        </List>
+      </Container>
     );
   }
 }
