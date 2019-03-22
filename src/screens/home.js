@@ -28,15 +28,15 @@ export default class Home extends Component {
           </Text>
         </Button>
         <List>
-          <ListItem>
+          <ListItem onPress={()=>{alert('people Pressed')}}>
             <Text>
               People
-              </Text>
+            </Text>
           </ListItem>
-          <ListItem>
+          <ListItem onPress={()=>{alert('planets Pressed')}}>
             <Text>
               Planets
-              </Text>
+            </Text>
           </ListItem>
         </List>
       </Container>
