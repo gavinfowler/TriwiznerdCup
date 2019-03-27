@@ -27,7 +27,7 @@ let SwapiService = class SwapiService {
                     next: response.next,
                 };
                 resolve(result);
-            });
+            })
             .catch((error) => {
                 console.error(error);
                 reject(error);
