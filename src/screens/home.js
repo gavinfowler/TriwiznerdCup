@@ -23,7 +23,7 @@ export default class Home extends Component {
     return (
       <Container>
         <Button>
-          <Text>
+          <Text onPress={()=> {this.props.navigation.navigate('Categories', {category: 'test'})}}>
             Test
           </Text>
         </Button>
