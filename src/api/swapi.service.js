@@ -59,27 +59,41 @@ let SwapiService = class SwapiService {
     }
 
     getFilms(url=ApiService.getFilms()) {
-            return new Promise((resolve, reject) => {
-                fetch(url)
-                .then((response) => response.json())
-                .then((response) => {
-                    let items = [];
-                    response.results.forEach(item => {
-                        items.push(new film(item));
-                    });
-
-                    let result = {
-                        items: items,
-                        next: response.next,
-                    };
-                    resolve(result);
-                })
-                .catch((error) => {
-                    console.error(error);
-                    reject(error);
+        return new Promise((resolve, reject) => {
+            fetch(url)
+            .then((response) => response.json())
+            .then((response) => {
+                let items = [];
+                response.results.forEach(item => {
+                    items.push(new film(item));
                 });
+
+                let result = {
+                    items: items,
+                    next: response.next,
+                };
+                resolve(result);
+            })
+            .catch((error) => {
+                console.error(error);
+                reject(error);
             });
-        }
+        });
+    }
+
+    getPerson(url) {
+        return new Promise((resolve, reject) => {
+            fetch(url)
+            .then((response) => response.json())
+            .then((response) => {
+                resolve(new people(response));
+            })
+            .catch((error) => {
+                console.error(error);
+                reject(error);
+            })
+        });
+    }
 };
 
 let swapiService = new SwapiService();
