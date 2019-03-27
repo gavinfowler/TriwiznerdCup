@@ -94,6 +94,34 @@ let SwapiService = class SwapiService {
             })
         });
     }
+
+    getPlanet(url) {
+        return new Promise((resolve, reject) => {
+            fetch(url)
+            .then((response) => response.json())
+            .then((response) => {
+                resolve(new planetsModel(response));
+            })
+            .catch((error) => {
+                console.error(error);
+                reject(error);
+            })
+        });
+    }
+
+    getFilm(url) {
+        return new Promise((resolve, reject) => {
+            fetch(url)
+            .then((response) => response.json())
+            .then((response) => {
+                resolve(new film(response));
+            })
+            .catch((error) => {
+                console.error(error);
+                reject(error);
+            })
+        });
+    }
 };
 
 let swapiService = new SwapiService();
