@@ -11,7 +11,7 @@ export class film{
     this.release_date = film.release_date;
     this.species = film.species;
     this.starships = film.starships;
-    this.title = film.title;
+    this.name = film.title;
     this.url = film.url;
     this.vehicles = film.vehicles;
   }

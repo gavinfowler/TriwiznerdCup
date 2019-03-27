@@ -42,7 +42,7 @@ let SwapiService = class SwapiService {
             .then((response) => {
                 let items = [];
                 response.results.forEach(item => {
-                    items.push(new planetsModel(JSON.parse(item)));
+                    items.push(new planetsModel(item));
                 });
 
                 let result = {
@@ -65,7 +65,7 @@ let SwapiService = class SwapiService {
                 .then((response) => {
                     let items = [];
                     response.results.forEach(item => {
-                        items.push(new film(JSON.parse(item)));
+                        items.push(new film(item));
                     });
 
                     let result = {
