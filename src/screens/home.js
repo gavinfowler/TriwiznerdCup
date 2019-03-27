@@ -22,6 +22,11 @@ export default class Home extends Component {
   render() {
     return (
       <Container>
+        <Button>
+          <Text onPress={()=> {this.props.navigation.navigate('Categories', {category: 'people'})}}>
+            Test
+          </Text>
+        </Button>
         <Button onPress={() => { this.props.navigation.navigate('PeopleDetails') }}>
           <Text>
             To People Detail
