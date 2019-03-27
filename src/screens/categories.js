@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Text, View, FlatList } from "react-native";
 
+//import api from "../services/"
 import CategoryItem from "../components/CategoryItem";
 
 export default class Movie extends Component {
     static navigationOptions = ({navigation}) => {
         let title = navigation.getParam('category');
+
         return { title };
     };
 
@@ -13,22 +15,49 @@ export default class Movie extends Component {
         super(props);
 
         this.state = {
-            results: []
+            results: [],
+            next_page: ""
         }
     }
 
     componentWillMount() {
-        // Put API call here to store results in state.results
-        // .then(result => this.setState(){...})
+        this.setState(() => {
+            return({ category: this.props.navigation.getParam('category') });
+        }, () => {
+            if(this.state.category == "people"){
+                // api.getPeople()
+                // .then((result) => {
+                //     this.setState((prevState) => {
+                //         return({
+                //             results: result.items,
+                //             next_page: result.next
+                //         });    
+                //     });
+                // })
+                // .catch(() => console.log("Something went wrong..."));
+            }
+            else if(this.state.category == "ships"){
+
+            }
+        });
     }
 
     _renderItem(item){
-        return <CategoryItem navigation={this.props.navigation}/>
+        return <CategoryItem navigation={this.props.navigation} data={item.data} category={this.state.category}/>
     }
 
     _nextPage(){
         // Call API to get next page and append results to results
-        // .then(result => this.setState(){ ... })
+        // api.getPeople(this.state.next_page)
+        //     .then((result) => {
+        //         this.setState((prevState) => {
+        //             return({
+        //                 results: prevState.movieResults.concat(result.items),
+        //                 next_page: result.next
+        //             });    
+        //         });
+        //     })
+        //     .catch(() => console.log("Something went wrong..."));
     }
 
     render(){
