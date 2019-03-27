@@ -20,14 +20,14 @@ let SwapiService = class SwapiService {
                 let items = [];
                 response.results.forEach(person => {
                     //items.push(new People(stuff here))
-                    items.push(new people(JSON.parse(person)));
+                    items.push(new people(person));
                 });
                 let result = {
                     items: items,
                     next: response.next,
                 };
                 resolve(result);
-            });
+            })
             .catch((error) => {
                 console.error(error);
                 reject(error);

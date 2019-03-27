@@ -12,23 +12,23 @@ let ApiService = class ApiService{
         return `${this.apiLocation}/people`;
     }
 
-    getPlanets {
+    getPlanets() {
         return `${this.apiLocation}/planets`;
     }
 
-    getFilms {
+    getFilms() {
         return `${this.apiLocation}/films`;
     }
 
-    getSpecies {
+    getSpecies() {
         return `${this.apiLocation}/species`;
     }
 
-    getVehicles {
+    getVehicles() {
         return `${this.apiLocation}/vehicles`;
     }
 
-    getStarships {
+    getStarships() {
         return `${this.apiLocation}/starships`;
     }
 };

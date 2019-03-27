@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, FlatList } from "react-native";
 
-//import api from "../services/"
+import api from "../api/swapi.service"
 import CategoryItem from "../components/CategoryItem";
 
 export default class Movie extends Component {
@@ -25,16 +25,16 @@ export default class Movie extends Component {
             return({ category: this.props.navigation.getParam('category') });
         }, () => {
             if(this.state.category == "people"){
-                // api.getPeople()
-                // .then((result) => {
-                //     this.setState((prevState) => {
-                //         return({
-                //             results: result.items,
-                //             next_page: result.next
-                //         });    
-                //     });
-                // })
-                // .catch(() => console.log("Something went wrong..."));
+                api.getPeople()
+                .then((result) => {
+                    this.setState((prevState) => {
+                        return({
+                            results: result.items,
+                            next_page: result.next
+                        });    
+                    });
+                })
+                .catch(() => console.log("Something went wrong..."));
             }
             else if(this.state.category == "ships"){
 
@@ -43,21 +43,21 @@ export default class Movie extends Component {
     }
 
     _renderItem(item){
-        return <CategoryItem navigation={this.props.navigation} data={item.data} category={this.state.category}/>
+        return <CategoryItem navigation={this.props.navigation} data={item.getData()} category={this.state.category}/>
     }
 
     _nextPage(){
-        // Call API to get next page and append results to results
-        // api.getPeople(this.state.next_page)
-        //     .then((result) => {
-        //         this.setState((prevState) => {
-        //             return({
-        //                 results: prevState.movieResults.concat(result.items),
-        //                 next_page: result.next
-        //             });    
-        //         });
-        //     })
-        //     .catch(() => console.log("Something went wrong..."));
+        //Call API to get next page and append results to results
+        api.getPeople(this.state.next_page)
+            .then((result) => {
+                this.setState((prevState) => {
+                    return({
+                        results: prevState.movieResults.concat(result.items),
+                        next_page: result.next
+                    });    
+                });
+            })
+            .catch(() => console.log("Something went wrong..."));
     }
 
     render(){
@@ -66,7 +66,7 @@ export default class Movie extends Component {
                 <FlatList
                   data={this.state.results}
                   extraData={this.state}
-                  keyExtractor={(item) => item.getData().id.toString()}
+                  keyExtractor={(item) => item.getData().url}
                   renderItem={(item) => this._renderItem(item.item)}
                   ListEmptyComponent={() => { return(<Text> No search results... </Text>)}}
                   onEndReachedThreshold={3}
