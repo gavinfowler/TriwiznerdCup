@@ -48,16 +48,18 @@ export default class Movie extends Component {
 
     _nextPage(){
         //Call API to get next page and append results to results
-        api.getPeople(this.state.next_page)
-            .then((result) => {
-                this.setState((prevState) => {
-                    return({
-                        results: prevState.movieResults.concat(result.items),
-                        next_page: result.next
-                    });    
-                });
-            })
-            .catch(() => console.log("Something went wrong..."));
+        if(this.state.category == "people"){
+            api.getPeople(this.state.next_page)
+                .then((result) => {
+                    this.setState((prevState) => {
+                        return({
+                            results: prevState.movieResults.concat(result.items),
+                            next_page: result.next
+                        });    
+                    });
+                })
+                .catch(() => console.log("Something went wrong..."));
+        }
     }
 
     render(){
