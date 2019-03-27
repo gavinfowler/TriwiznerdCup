@@ -1,5 +1,6 @@
 import ApiService from './api.service';
 import {people} from '../models/peopleModel';
+import {film} from '../models/filmModel';
 
 let SwapiService = class SwapiService {
     constructor() {
@@ -22,10 +23,33 @@ let SwapiService = class SwapiService {
                 });
                 let result = {
                     items: items,
-                    next: response.next
+                    next: response.next,
                 };
                 resolve(result);
             });
+            .catch((error) => {
+                console.error(error);
+                reject(error);
+            });
+        });
+    }
+
+    getPlanets(url=ApiService.getPlanets()) {
+        return new Promise((resolve, reject) => {
+            fetch(url)
+            .then((response) => response.json())
+            .then((response) => {
+                let items = [];
+                response.results.forEach(item => {
+                    items.push(new film(item));
+                });
+
+                let result = {
+                    items: items,
+                    next: response.next,
+                };
+                resolve(result);
+            })
             .catch((error) => {
                 console.error(error);
                 reject(error);
