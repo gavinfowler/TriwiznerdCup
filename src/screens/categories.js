@@ -16,7 +16,8 @@ export default class Movie extends Component {
 
         this.state = {
             results: [],
-            next_page: ""
+            next_page: "",
+            category: null
         }
     }
 
@@ -34,13 +35,14 @@ export default class Movie extends Component {
     }
 
     componentWillMount() {
+        console.log(this.props.navigation.getParam('category'));
         this.setState(() => {
             return({ category: this.props.navigation.getParam('category') });
         }, () => {
             let apicall = this.getApiCall();
             apicall()
                 .then((result) => {
-                    console.log('result', result)
+                    console.log('result', result);
                     this.setState(() => {
                         return({
                             results: result.items,
