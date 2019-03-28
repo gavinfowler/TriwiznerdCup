@@ -27,6 +27,16 @@ export default class Home extends Component {
             To People Detail
           </Text>
         </Button>
+        <Button onPress={() => { this.props.navigation.navigate('PlanetDetails') }}>
+          <Text>
+            To Planet Detail
+          </Text>
+        </Button>
+        <Button onPress={() => { this.props.navigation.navigate('FilmDetails') }}>
+          <Text>
+            To Film Detail
+          </Text>
+        </Button>
         <List>
           <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'people' }) }}>
             <Text>

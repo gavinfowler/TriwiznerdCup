@@ -7,7 +7,9 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import Home from './src/screens/home';
 import Categories from './src/screens/categories';
-import PeopleDetails from './src/screens/peopleDetail';
+import PeopleDetail from './src/screens/peopleDetail';
+import PlanetDetail from './src/screens/planetDetail';
+import FilmDetail from './src/screens/filmDetail';
 
 export default class App extends Component {
     render() {
@@ -21,7 +23,9 @@ const Root = createStackNavigator(
     {
         Home: Home,
         Categories: Categories,
-        PeopleDetails: PeopleDetails,
+        PeopleDetails: PeopleDetail,
+        PlanetDetails: PlanetDetail,
+        FilmDetails:FilmDetail,
     },
     {
         initialRouteName: 'Home'
