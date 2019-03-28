@@ -22,33 +22,23 @@ export default class Home extends Component {
   render() {
     return (
       <Container>
-        <Button>
-          <Text onPress={()=> {this.props.navigation.navigate('Categories', {category: 'people'})}}>
-            Test
-          </Text>
-        </Button>
         <Button onPress={() => { this.props.navigation.navigate('PeopleDetails') }}>
           <Text>
             To People Detail
           </Text>
         </Button>
         <List>
-          <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'test' }) }}>
-            <Text>
-              Test
-          </Text>
-          </ListItem>
-          <ListItem onPress={() => { alert('people Pressed') }}>
+          <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'people' }) }}>
             <Text>
               People
             </Text>
           </ListItem>
-          <ListItem onPress={() => { alert('planets Pressed') }}>
+          <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'planets' }) }}>
             <Text>
               Planets
             </Text>
           </ListItem>
-          <ListItem onPress={() => { alert('films Pressed') }}>
+          <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'films' }) }}>
             <Text>
               Films
             </Text>

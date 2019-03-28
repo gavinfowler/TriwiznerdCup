@@ -20,14 +20,28 @@ export default class Movie extends Component {
         }
     }
 
+    getApiCall(){
+        if(this.state.category == "people"){
+            return api.getPeople;
+        }
+        else if(this.state.category == "planets"){
+            return api.getPlanets;
+        }
+        else if(this.state.category == "films"){
+            return api.getFilms;
+        }
+        return api.getPeople;
+    }
+
     componentWillMount() {
         this.setState(() => {
             return({ category: this.props.navigation.getParam('category') });
         }, () => {
-            if(this.state.category == "people"){
-                api.getPeople()
+            let apicall = this.getApiCall();
+            apicall()
                 .then((result) => {
-                    this.setState((prevState) => {
+                    console.log('result', result)
+                    this.setState(() => {
                         return({
                             results: result.items,
                             next_page: result.next
@@ -36,10 +50,7 @@ export default class Movie extends Component {
                 })
                 .catch(() => console.log("Something went wrong..."));
             }
-            else if(this.state.category == "ships"){
-
-            }
-        });
+        );
     }
 
     _renderItem(item){
@@ -48,18 +59,23 @@ export default class Movie extends Component {
 
     _nextPage(){
         //Call API to get next page and append results to results
-        if(this.state.category == "people"){
-            api.getPeople(this.state.next_page)
-                .then((result) => {
-                    this.setState((prevState) => {
-                        return({
-                            results: prevState.movieResults.concat(result.items),
-                            next_page: result.next
-                        });    
-                    });
-                })
-                .catch(() => console.log("Something went wrong..."));
+        if(this.state.next_page == null){
+            return;
         }
+        
+        let apicall = this.getApiCall();
+        console.log("next page", this.state.next_page, apicall)
+        apicall(this.state.next_page)
+            .then((result) => {
+                this.setState((prevState) => {
+                    return({
+                        results: prevState.movieResults.concat(result.items),
+                        next_page: result.next
+                    });    
+                });
+            })
+            .catch(() => console.log("Something went wrong..."));
+        
     }
 
     render(){
@@ -70,7 +86,7 @@ export default class Movie extends Component {
                   extraData={this.state}
                   keyExtractor={(item) => item.getData().url}
                   renderItem={(item) => this._renderItem(item.item)}
-                  ListEmptyComponent={() => { return(<Text> No search results... </Text>)}}
+                  ListEmptyComponent={() => { return(<Text> Searching for {this.state.category}... </Text>)}}
                   onEndReachedThreshold={3}
                   onEndReached={() => this._nextPage()}
                 />
