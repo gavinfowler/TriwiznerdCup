@@ -85,7 +85,7 @@ export default class FilmDetail extends Component {
     super(props);
 
     this.state = {
-      film: this.test,
+      film: this.props.navigation.getParam('data'),
     }
   };
 

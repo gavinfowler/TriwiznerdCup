@@ -82,14 +82,9 @@ export default class PeopleDetail extends Component {
     super(props);
 
     this.state = {
-      person: this.test,
+      person: this.props.navigation.getParam('data'),
     }
   };
-
-
-  componentWillMount() {
-    this.setState({ person: this.test });
-  }
 
   render() {
     return (
