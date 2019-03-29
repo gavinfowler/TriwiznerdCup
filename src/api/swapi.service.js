@@ -81,6 +81,26 @@ let SwapiService = class SwapiService {
         });
     }
 
+    getPeopleArray(urls) {
+        return new Promise((resolve, reject) => {
+            let items = [];
+
+            for (let i = 0; i < urls.length; i++) {
+                fetch(urls[i])
+                .then((response) => response.json())
+                .then((response) => {
+                    items.push(new people(response));
+                })
+                .catch((error) => {
+                    console.error(error);
+                    reject(error);
+                })
+            }
+
+            resolve(items);
+        });
+    }
+
     getPerson(url) {
         return new Promise((resolve, reject) => {
             fetch(url)
