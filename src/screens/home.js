@@ -22,7 +22,7 @@ export default class Home extends Component {
   render() {
     return (
       <Container>
-        <Button onPress={() => { this.props.navigation.navigate('PeopleDetails') }}>
+        {/* <Button onPress={() => { this.props.navigation.navigate('PeopleDetails') }}>
           <Text>
             To People Detail
           </Text>
@@ -36,7 +36,7 @@ export default class Home extends Component {
           <Text>
             To Film Detail
           </Text>
-        </Button>
+        </Button> */}
         <List>
           <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'people' }) }}>
             <Text>

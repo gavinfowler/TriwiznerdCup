@@ -35,13 +35,9 @@ export default class PlanetDetail extends Component {
     super(props);
 
     this.state = {
-      planet: this.test,
+      planet: this.props.navigation.getParam('data'),
     }
   };
-
-  componentWillMount() {
-    this.setState({ planet: this.test });
-  }
 
   render() {
     return (
