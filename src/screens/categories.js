@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, FlatList } from "react-native";
+import { Text, View, FlatList, Button } from "react-native";
 
 import api from "../api/swapi.service"
 import CategoryItem from "../components/CategoryItem";
@@ -81,6 +81,12 @@ export default class Movie extends Component {
     }
 
     render(){
+        let button = null;
+        if(this.state.next_page){
+            button = <Button onPress={() => _nextPage()}>
+                <Text> Load More </Text>
+            </Button>;
+        }
         return(
             <View>
                 <FlatList
@@ -89,9 +95,10 @@ export default class Movie extends Component {
                   keyExtractor={(item) => item.getData().url}
                   renderItem={(item) => this._renderItem(item.item)}
                   ListEmptyComponent={() => { return(<Text> Searching for {this.state.category}... </Text>)}}
-                  onEndReachedThreshold={3}
-                  onEndReached={() => this._nextPage()}
+                  //onEndReachedThreshold={3}
+                  //onEndReached={() => this._nextPage()}
                 />
+                {button}
             </View>
         );
     }
