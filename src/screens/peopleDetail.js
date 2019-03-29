@@ -83,8 +83,44 @@ export default class PeopleDetail extends Component {
 
     this.state = {
       person: this.props.navigation.getParam('data'),
+      films: null,
     }
   };
+
+  _renderCastItem = ({ item }) => {
+    return (
+      <Card id={item.id} >
+      <CardItem button onPress={()=>{this.goToPersonDetail(item.id)}}>
+        <Body>
+          <Text style={{fontWeight: "bold"}}>Title</Text>
+          <Text>{item.name}</Text>
+          <Text style={{fontWeight: "bold"}}>Episode</Text>
+          <Text>{item.character}</Text>
+          <Text style={{fontWeight: "bold"}}>Director</Text>
+          <Text>{item.character}</Text>
+        </Body>
+      </CardItem>
+      </Card>
+    );
+  }
+
+  _renderEmptyList = () => {
+    return (
+      <Text>...Just a few more seconds</Text>
+    );
+  }
+
+  getFilms(){
+    return (
+      <FlatList
+        horizontal={true}
+        data={this.state.data.cast}
+        keyExtractor={(item, index) => item.name}
+        renderItem={this._renderCastItem}
+        ListEmptyComponent={this._renderEmptyList}
+      />
+    );
+  }
 
   render() {
     return (
