@@ -78,7 +78,8 @@ export default class FilmDetail extends Component {
   }
 
   static navigationOptions = {
-    title: 'Film Detail page'
+    title: 'Film Detail page',
+    headerStyle: { backgroundColor: 'grey' }
   };
 
   constructor(props) {

@@ -8,7 +8,8 @@ import { Button, Container, List, ListItem, Image } from 'native-base'
 
 export default class Home extends Component {
   static navigationOptions = {
-    title: 'Home'
+    title: 'Home',
+    headerStyle: { backgroundColor: 'grey' }
   }
 
 

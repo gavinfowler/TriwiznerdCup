@@ -28,7 +28,8 @@ export default class PlanetDetail extends Component {
   }
 
   static navigationOptions = {
-    title: 'Planet Detail page'
+    title: 'Planet Detail page',
+    headerStyle: { backgroundColor: 'grey' }
   };
 
   constructor(props) {

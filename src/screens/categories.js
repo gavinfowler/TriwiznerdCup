@@ -9,7 +9,10 @@ export default class Movie extends Component {
     static navigationOptions = ({navigation}) => {
         let title = navigation.getParam('category');
 
-        return { title };
+        return { 
+            title,
+            headerStyle: { backgroundColor: 'grey' }
+        };
     };
 
     constructor(props) {

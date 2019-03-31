@@ -9,7 +9,8 @@ import { Button, Text, Container, List, ListItem, Content, Card, CardItem, Body 
 export default class PeopleDetail extends Component {
 
   static navigationOptions = {
-    title: 'People Detail page'
+    title: 'People Detail page',
+    headerStyle: { backgroundColor: 'grey' }
   };
 
   constructor(props) {
