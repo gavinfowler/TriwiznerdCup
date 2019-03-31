@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Text, View, FlatList } from "react-native";
+import { Text, View, FlatList, Button } from "react-native";
 
 import api from "../api/swapi.service"
 import CategoryItem from "../components/CategoryItem";
+import { Container } from "native-base";
 
 export default class Movie extends Component {
     static navigationOptions = ({navigation}) => {
@@ -35,7 +36,6 @@ export default class Movie extends Component {
     }
 
     componentWillMount() {
-        console.log(this.props.navigation.getParam('category'));
         this.setState(() => {
             return({ category: this.props.navigation.getParam('category') });
         }, () => {
@@ -81,18 +81,25 @@ export default class Movie extends Component {
     }
 
     render(){
+        // let button = null;
+        // if(this.state.next_page){
+        //     button = <Button onPress={() => _nextPage()}>
+        //         <Text> Load More </Text>
+        //     </Button>;
+        // }
         return(
-            <View>
+            <Container style={{backgroundColor:'black'}}>
                 <FlatList
                   data={this.state.results}
                   extraData={this.state}
                   keyExtractor={(item) => item.getData().url}
                   renderItem={(item) => this._renderItem(item.item)}
-                  ListEmptyComponent={() => { return(<Text> Searching for {this.state.category}... </Text>)}}
-                  onEndReachedThreshold={3}
-                  onEndReached={() => this._nextPage()}
+                  ListEmptyComponent={() => { return(<Text style={{color:'yellow'}}> Searching for {this.state.category}... </Text>)}}
+                  //onEndReachedThreshold={3}
+                  //onEndReached={() => this._nextPage()}
                 />
-            </View>
+                {/* {button} */}
+            </Container>
         );
     }
 }

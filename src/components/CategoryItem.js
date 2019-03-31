@@ -18,9 +18,9 @@ export default class CategoryItem extends Component {
     render() {
         return (
             <Card>
-                <CardItem button onPress={() => this.toDetailPage()}>
+                <CardItem button onPress={() => this.toDetailPage()} style={{backgroundColor:'black'}}>
                     <Body>
-                        <Text>
+                        <Text style={{color:'yellow'}}>
                             {this.props.data.name}
                         </Text>
                     </Body>

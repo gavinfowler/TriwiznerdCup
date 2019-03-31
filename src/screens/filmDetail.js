@@ -91,35 +91,27 @@ export default class FilmDetail extends Component {
 
   render() {
     return (
-      <Container>
+      <Container style={styles.back}>
         <Content>
           <Card>
-            <CardItem header>
-              <Text>
-                {this.state.film.title}
+            <CardItem header style={styles.back}>
+              <Text style={styles.text}>
+                {this.state.film.name}
               </Text>
             </CardItem>
-            <CardItem>
+            <CardItem style={styles.back}>
               <Body>
-                <Text>
-                  Episode: {this.state.film.episode_id}
-                </Text>
-                <Text>
-                  Director: {this.state.film.director}
-                </Text>
-                <Text>
-                  Producer {this.state.film.producer}
-                </Text>
-                <Text>
-                  Release Date: {this.state.film.release_date}
-                </Text>
-                <Text>
+                <Text style={styles.text}>
+                  Episode: {this.state.film.episode_id} {'\n'}
+                  Director: {this.state.film.director} {'\n'}
+                  Producer: {this.state.film.producer} {'\n'}
+                  Release Date: {this.state.film.release_date} {'\n'}
                   Opening Crawl: {'\n\n'}{this.state.film.opening_crawl}
                 </Text>
               </Body>
             </CardItem>
-            <CardItem footer>
-              <Text>
+            <CardItem footer style={styles.back}>
+              <Text style={styles.text}>
                 Date Created: {new Date(this.state.film.created).toLocaleDateString()}
               </Text>
             </CardItem>
@@ -131,6 +123,12 @@ export default class FilmDetail extends Component {
 }
 
 const styles = StyleSheet.create({
+  text: {
+    color: 'yellow'
+  },
+  back: {
+    backgroundColor: 'black'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

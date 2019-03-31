@@ -41,46 +41,27 @@ export default class PlanetDetail extends Component {
 
   render() {
     return (
-      <Container>
+      <Container  style={styles.back}>
         <Content>
           <Card>
-            <CardItem header>
-              <Text>
+            <CardItem header style={styles.back}>
+              <Text style={styles.text}>
                 {this.state.planet.name}
               </Text>
             </CardItem>
-            <CardItem>
+            <CardItem style={styles.back}>
               <Body>
-                <Text>
-                  Population: {this.state.planet.population}
-                </Text>
-                <Text>
-                  Climate: {this.state.planet.climate}
-                </Text>
-                <Text>
-                  Gravity: {this.state.planet.gravity}
-                </Text>
-                <Text>
-                  Terrain: {this.state.planet.terrain}
-                </Text>
-                <Text>
-                  Diameter: {this.state.planet.diameter}
-                </Text>
-                <Text>
-                  Rotation Period: {this.state.planet.rotation_period}
-                </Text>
-                <Text>
-                  Orbital Period: {this.state.planet.orbital_period}
-                </Text>
-                <Text>
-                  Surface Water: {this.state.planet.surface_water}
+                <Text style={styles.text}>
+                  Population: {this.state.planet.population} {'\n'}
+                  Climate: {this.state.planet.climate} {'\n'}
+                  Gravity: {this.state.planet.gravity} {'\n'}
+                  Terrain: {this.state.planet.terrain} {'\n'}
+                  Diameter: {this.state.planet.diameter} {'\n'}
+                  Rotation Period: {this.state.planet.rotation_period} {'\n'}
+                  Orbital Period: {this.state.planet.orbital_period} {'\n'}
+                  Surface Water: {this.state.planet.surface_water} {'\n'}
                 </Text>
               </Body>
-            </CardItem>
-            <CardItem footer>
-              <Text>
-                Date Created: {new Date(this.state.planet.created).toLocaleDateString()}
-              </Text>
             </CardItem>
           </Card>
         </Content>
@@ -90,6 +71,12 @@ export default class PlanetDetail extends Component {
 }
 
 const styles = StyleSheet.create({
+  text: {
+    color: 'yellow'
+  },
+  back: {
+    backgroundColor: 'black'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

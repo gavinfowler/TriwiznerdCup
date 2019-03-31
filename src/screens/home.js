@@ -3,15 +3,8 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet } from 'react-native';
-import { Button, Text, Container, List, ListItem } from 'native-base'
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { Platform, StyleSheet, Text, ImageBackground } from 'react-native';
+import { Button, Container, List, ListItem, Image } from 'native-base'
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -21,8 +14,8 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Container>
-        {/* <Button onPress={() => { this.props.navigation.navigate('PeopleDetails') }}>
+      <Container style={styles.back}>
+          {/* <Button onPress={() => { this.props.navigation.navigate('PeopleDetails') }}>
           <Text>
             To People Detail
           </Text>
@@ -37,29 +30,36 @@ export default class Home extends Component {
             To Film Detail
           </Text>
         </Button> */}
-        <List>
-          <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'people' }) }}>
-            <Text>
-              People
+          <List>
+            <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'people' }) }}>
+              <Text style={styles.text}>
+                People
             </Text>
-          </ListItem>
-          <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'planets' }) }}>
-            <Text>
-              Planets
+            </ListItem>
+            <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'planets' }) }}>
+              <Text style={styles.text}>
+                Planets
             </Text>
-          </ListItem>
-          <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'films' }) }}>
-            <Text>
-              Films
+            </ListItem>
+            <ListItem onPress={() => { this.props.navigation.navigate('Categories', { category: 'films' }) }}>
+              <Text style={styles.text}>
+                Films
             </Text>
-          </ListItem>
-        </List>
+            </ListItem>
+          </List>
       </Container>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  text: {
+    color: 'yellow',
+    fontSize: 20
+  },
+  back: {
+    backgroundColor: 'black'
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
